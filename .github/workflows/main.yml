@@ -1,0 +1,80 @@
+name: classroomfinder-backend
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [pmain, feature/**]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16
+      - name: Install Dependencies
+        run: |
+          cd functions
+          yarn install --frozen-lockfile
+      - name: Running linter
+        run: |
+          cd functions 
+          yarn lint
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16
+      - name: Install Dependencies
+        run: |
+          cd functions
+          yarn install --frozen-lockfile
+      - name: Run Testing Suite
+        run: |
+          cd functions
+          yarn test:ci
+  auto-deploy-to-test:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/development'
+    needs: [tests, lint]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16
+      - name: Install Dependencies
+        run: |
+          cd functions
+          yarn install --frozen-lockfile
+      - name: Auto Deploy functions
+        run: |
+          cd functions
+          yarn deploy:dev --token $token
+        env:
+          token: ${{ secrets.FIREBASE_TOKEN }}
+
+  auto-deploy-to-prod:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/production'
+    needs: [tests, lint]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16
+      - name: Install Dependencies
+        run: |
+          cd functions
+          yarn install --frozen-lockfile
+      - name: Auto Deploy functions
+        run: |
+          cd functions
+          yarn deploy:prod --token $token
