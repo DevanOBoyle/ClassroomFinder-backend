@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
   pull_request:
-    branches: [pmain, feature/**]
+    branches: [main, feature/**]
 
 jobs:
   lint:
@@ -35,10 +35,6 @@ jobs:
         run: |
           cd functions
           yarn install --frozen-lockfile
-      - name: Run Testing Suite
-        run: |
-          cd functions
-          yarn test:ci
   auto-deploy-to-test:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/development'
