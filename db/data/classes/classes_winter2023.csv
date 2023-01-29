@@ -144,7 +144,7 @@ BIOE281X-01,Topics in Marine Verts,31352,"Beltran,R.S.",TBD In Person,TBD
 BIOE281Z-01,Cons Sci Changng World,31353,"Zavaleta,E.S.",TBD In Person,TBD
 BIOE286-01,Exp Dsgn/Data Anlys,30281,"Kilpatrick,A.M.",,115
 BIOE286L-01,Exp Design/Data Lab,45161,"Kilpatrick,A.M.",,115
-BIOE294-01,Ecol, Evol Bio Sem,31354,"Meyer,R.",CoastBio 110,F 09:30AM-10:30AM
+BIOE294-01,"Ecol, Evol Bio Sem",31354,"Meyer,R.",CoastBio 110,F 09:30AM-10:30AM
 BIOL20A-01,Cell & Molecular Bi,31083,"Bordignon,G.",Humn Lecture Hall,TuTh 11:40AM-01:15PM
 BIOL20L-01,Experimental Lab,31063,"Shanks,J.A.",Thim Lecture 003,M 01:20PM-02:25PM
 BIOL100-01,Biochemistry,31082,"Lee,J.C.",Media Theater M110,MWF 10:40AM-11:45AM
@@ -332,7 +332,7 @@ CRES190C-01,Black Transnational,45204,"Azeb,S.",Humanities 1 520,Tu 04:00PM-07:0
 CRES190G-01,Queer Worlds,31185,"Shange-Binion,S.T.",Cowell Acad 223,W 11:40AM-02:40PM
 CRES190R-01,Hist of Carceral State,45216,"LeBron,M.",Humanities 1 320,Th 12:00PM-03:00PM
 CRES202-01,Ecopoetics/aesthetics,45215,"Ife,F.",Humanities 1 320,M 02:00PM-05:00PM
-CRES213-01,Colonialism, Racial Ca,45184,"Staff",,Cancelled Cancelled
+CRES213-01,"Colonialism, Racial Ca",45184,"Staff",,Cancelled Cancelled
 CRSN10-01,Academic Success,32581,"Knisely,L.E.",Oakes Acad 102,Tu 11:40AM-01:15PM
 CRSN20G-01,PeregrFalconsReturn,31184,"Stewart,G.R.",R Carson Acad 240,M 05:20PM-06:55PM
 CRSN55-01,Service Learning,32582,"Watrous,S.A.",R Carson Acad 250,M 05:20PM-06:55PM
@@ -557,7 +557,7 @@ EDUC50B-01,CAL Teach 1: Math,45126,"Vandercook,H.",PhysSciences 140,Tu 07:10PM-0
 EDUC50C-01,CAL Teach1: Science,45127,"Maddox,E.",PhysSciences 140,Tu 05:20PM-06:55PM
 EDUC100A-01,Cal Teach2: Sci/Math,45128,"Webb,L.",,Engr 165
 EDUC102-01,Education Media&Soc,30423,"Higdon,N.",Cowell Clrm 131,TuTh 08:00AM-09:35AM
-EDUC110-01,Ed, Dem, and Movements,30484,"Lashaw,A.",Porter Acad 144,TuTh 01:30PM-03:05PM
+EDUC110-01,"Ed, Dem, and Movements",30484,"Lashaw,A.",Porter Acad 144,TuTh 01:30PM-03:05PM
 EDUC121-01,K-12 Ethnic Studies,30412,"Gallagher-Geurtsen,T.",Online,TBD
 EDUC128-01,Immigrants And Educ,30422,"Raja,F.",Porter Acad 148,TuTh 09:50AM-11:25AM
 EDUC135-01,Gender & Education,30421,"Svigelj-Smith,M.M.",Porter Acad 148,TuTh 03:20PM-04:55PM
@@ -588,14 +588,14 @@ ENVS19-01,Topics in Nat Hist,31567,"Schwarz,C.F.",Nat Sci 2 229,TuTh 09:50AM-11:
 ENVS19-02,Topics in Nat Hist,31569,"Schwarz,C.F.",Nat Sci 2 229,TuTh 01:30PM-03:05PM
 ENVS25-01,Enviro Policy/Econ,31180,"Jinnah,S.",Online,TBD
 ENVS65-01,Fresh Water Process,30250,"Haddad,B.M.",Online,TBD
-ENVS100-01,Ecology and Society,30255,"Ocampo-Penuela,N.",II,A.J.,d 105
-ENVS100L-01,Ecol & Soc Writ Lab,30243,"Kulikowski II,A.J.",,TBD
-ENVS100L-02,Ecol & Soc Writ Lab,30242,"Kulikowski II,A.J.",,TBD
-ENVS100L-03,Ecol & Soc Writ Lab,45232,"Kulikowski II,A.J.",,TBD
-ENVS100L-04,Ecol & Soc Writ Lab,45233,"Ocampo-Penuela,N.",II,A.J.,TBD
-ENVS100L-05,Ecol & Soc Writ Lab,45234,"Kulikowski II,A.J.",,TBD
-ENVS100L-06,Ecol & Soc Writ Lab,45235,"Kulikowski II,A.J.",,TBD
-ENVS100L-07,Ecol & Soc Writ Lab,45236,"Kulikowski II,A.J.",,TBD
+ENVS100-01,Ecology and Society,30255,"Ocampo-Penuela,N.",Oakes Acad 105,MW 10:40AM-11:45AM
+ENVS100L-01,Ecol & Soc Writ Lab,30243,"Kulikowski II,A.J.",ISB 431,TBD
+ENVS100L-02,Ecol & Soc Writ Lab,30242,"Kulikowski II,A.J.",ISB 431,TBD
+ENVS100L-03,Ecol & Soc Writ Lab,45232,"Kulikowski II,A.J.",ISB 455,TBD
+ENVS100L-04,Ecol & Soc Writ Lab,45233,"Ocampo-Penuela,N.",ISB 431,TBD
+ENVS100L-05,Ecol & Soc Writ Lab,45234,"Kulikowski II,A.J.",ISB 431,TBD
+ENVS100L-06,Ecol & Soc Writ Lab,45235,"Kulikowski II,A.J.",ISB 431,TBD
+ENVS100L-07,Ecol & Soc Writ Lab,45236,"Kulikowski II,A.J.",ISB 221,TBD
 ENVS115B-01,Intermediate GIS,31571,"Nickel,B.",ISB 486,TuTh 08:00AM-09:35AM
 ENVS123-01,Animal Ecol/Cnsrvtn,31572,"Wilmers,C.C.",ISB 221,MWF 04:00PM-05:05PM
 ENVS125-01,Ecosystems of Calif,31580,"Bernier,K.M.",Online,TBD
@@ -674,7 +674,7 @@ FMST100-01,Feminist Theories,30284,"Schaeffer-Grabiel,F.",Thim Lecture 001,TuTh 
 FMST188-01,Topics in FMST,31948,"Padilla,E.",Online,TuTh 03:20PM-04:55PM
 FMST194A-01,Fem Jurisprudence,31949,"Krauss,A.",Humanities 1 320,Tu 10:00AM-01:00PM
 FMST194R-01,Hist of Carceral State,45219,"LeBron,M.",Humanities 1 320,Th 12:00PM-03:00PM
-FMST213-01,Colonialism, Racial Ca,45185,"Staff",,Cancelled Cancelled
+FMST213-01,"Colonialism, Racial Ca",45185,"Staff",,Cancelled Cancelled
 FMST224-01,Reproductive Justice,45214,"Krauss,A.",Humanities 1 320,W 01:00PM-04:00PM
 FREN1-01,French: First Year,30782,"Rohmer,C.",Oakes Acad 222,MWF 09:20AM-10:25AM
 FREN1-02,French: First Year,30781,"Rohmer,C.",Oakes Acad 222,MWF 10:40AM-11:45AM
@@ -687,7 +687,7 @@ FREN5-01,French: Second Year,30780,"Siskin,H.",Oakes Acad 101,MWF 04:00PM-05:05P
 FREN6-01,French: Second Year,30774,"Staff",,Cancelled Cancelled
 FREN114-01,French Phonetics,30187,"Donaldson,B.A.",Oakes Acad 222,TuTh 01:30PM-03:05PM
 GAME201-50,Level Design,32293,"John,M.B.",SiliconValleyCtr,TuTh 09:50AM-11:25AM
-GAME202-50,ALT CTRL, AR and VR,32296,"Melcer,E.F.",SiliconValleyCtr,TuTh 11:40AM-01:15PM
+GAME202-50,"ALT CTRL, AR and VR",32296,"Melcer,E.F.",SiliconValleyCtr,TuTh 11:40AM-01:15PM
 GAME210-50,Game Art Intensive,32297,"Khalid,A.",SiliconValleyCtr,MWF 10:40AM-11:45AM
 GAME215-50,Audio Direction,32298,"Sporka,A.",SiliconValleyCtr,TuTh 01:30PM-03:05PM
 GAME236-50,Game Development II,32299,"Emerzian,Z.C.",SiliconValleyCtr,TuTh 03:20PM-04:55PM
@@ -732,7 +732,7 @@ HIS100-01,His Skills & Methds,31035,"Breen,B.P.",Earth&Marine B214,TuTh 01:30PM-
 HIS109A-01,The Antebellum South,30430,"Smyth,E.G.",PhysSciences 114,TuTh 09:50AM-11:25AM
 HIS110A-01,Colonial U S 1500-1750,31045,"Westerkamp,M.J.",Porter Acad 144,TuTh 11:40AM-01:15PM
 HIS128-01,Chicana/o History,31044,"Delgado,G.P.",Soc Sci 2 075,TuTh 08:00AM-09:35AM
-HIS134B-01,Mexico, 1850-Presnt,31043,"O'Hara,M.D.",N. Sci Annex 101,MW 05:20PM-06:55PM
+HIS134B-01,"Mexico, 1850-Presnt",31043,"O'Hara,M.D.",N. Sci Annex 101,MW 05:20PM-06:55PM
 HIS140B-01,His China 1644-1911,31026,"Hu,M.",Hum & Soc Sci 259,MWF 10:40AM-11:45AM
 HIS150A-01,Ancient Japan,31042,"Aso,N.",Soc Sci 1 110,TuTh 03:20PM-04:55PM
 HIS150E-01,Okinawan History,31023,"McClellan,A.L.",Online,TBD
@@ -800,7 +800,7 @@ LALS100B-01,CulturalTheoryAmers,30568,"Patel,S.",Merrill Acad 102,MWF 02:40PM-03
 LALS128-01,Latino Media: U.S.,45353,"Lopez,L.T.",Oakes Acad 102,MWF 10:40AM-11:45AM
 LALS135-01,El Salvador,31302,"Rivas,C.M.",Cowell Clrm 131,TuTh 05:20PM-06:55PM
 LALS144-01,Mexicana/Chicana,31304,"Arredondo,G.F.",Porter Acad 148,TuTh 11:40AM-01:15PM
-LALS150-01,Afro-Lat Soc, Cul, Pol,45218,"Delgadillo,R.E.",Remote Instruction,TBD
+LALS150-01,"Afro-Lat Soc, Cul, Pol",45218,"Delgadillo,R.E.",Remote Instruction,TBD
 LALS172-01,VisualizingHumanRights,31309,"Patel,S.",Steven Acad 175,MWF 12:00PM-01:05PM
 LALS177-01,MigrantHlth&SocJustice,45191,"Martinez,C.",Porter Acad 148,TuTh 05:20PM-06:55PM
 LALS180-01,Borders:Real/Imagin,31303,"Arredondo,G.F.",Merrill Acad 102,TuTh 03:20PM-04:55PM
@@ -835,7 +835,7 @@ LGST196-01,Senior Capstone,30178,"Gehring,J.S.",Oakes Acad 103,TuTh 09:50AM-11:2
 LGST196-02,Senior Capstone,30667,"Beaumont,K.E.",J Baskin Engr 156,TuTh 03:20PM-04:55PM
 LING50-01,Intr To Linguistics,30441,"Toosarvandani,M.",Earth&Marine B206,TuTh 03:20PM-04:55PM
 LING53-01,Semantics I,30442,"Law,J.",Steven Acad 175,TuTh 08:00AM-09:35AM
-LING80C-01,Lang, Socty & Cultr,30329,"Padgett,J.",Humn Lecture Hall,MWF 10:40AM-11:45AM
+LING80C-01,"Lang, Socty & Cultr",30329,"Padgett,J.",Humn Lecture Hall,MWF 10:40AM-11:45AM
 LING100-01,Phonetics I,30428,"Sokolov,N.",Steven Acad 175,MWF 09:20AM-10:25AM
 LING101-01,Phonology I,30531,"Bennett,R.T.",R Carson Acad 240,MWF 09:20AM-10:25AM
 LING112-01,Syntax I,30508,"Sichel,I.",Soc Sci 2 071,TuTh 01:30PM-03:05PM
@@ -889,9 +889,9 @@ MATH2-01,Col Algbra/Calculus,30532,"Lam,Y.",Thim Lecture 001,MWF 12:00PM-01:05PM
 MATH3-01,Precalculus,30560,"Morales,P.",Media Theater M110,MWF 09:20AM-10:25AM
 MATH11A-01,Calculus with Apps,30240,"Milea,S.",Media Theater M110,MWF 02:40PM-03:45PM
 MATH11B-01,Calculus with Apps,30559,"Milea,S.",ClassroomUnit 002,MWF 10:40AM-11:45AM
-MATH19A-01,Calc:Sci,Engin,Math,30591,"Migliore,E.T.",,TBD
-MATH19B-01,Calc:Sci,Engin,Math,30590,"Lin,L.",,TBD
-MATH19B-02,Calc:Sci,Engin,Math,30558,"Tamanoi,H.",Media Theater M110,MWF 04:00PM-05:05PM
+MATH19A-01,"Calc:Sci,Engin,Math",30591,"Migliore,E.T.",,TBD
+MATH19B-01,"Calc:Sci,Engin,Math",30590,"Lin,L.",,TBD
+MATH19B-02,"Calc:Sci,Engin,Math",30558,"Tamanoi,H.",Media Theater M110,MWF 04:00PM-05:05PM
 MATH21-01,Linear Algebra,30557,"Cooperstein,B.N.",J Bask Aud 101,MWF 01:20PM-02:25PM
 MATH22-01,Calc of Several Var,30241,"Ramirez Luna,M.",Oakes Acad 105,MWF 09:20AM-10:25AM
 MATH23A-01,Vector Calculus,30589,"Lin,L.",,TBD
@@ -965,7 +965,7 @@ MUSC12-01,Mariachi Ensemble,30875,"Rodriguez,R.C.",Music Center 114,TuTh 03:20PM
 MUSC12B-01,Mexican Folklorico,31128,"Vega,M.S.",OPERS Multi Purpose,Tu 07:00PM-09:00PM
 MUSC14-01,TheoryMusicianshipII,31127,"Kim,H.K.",Music Center 136,TuTh 01:30PM-03:05PM
 MUSC16-01,Foundations of Music,30876,"Hammond,N.",Music Center 136,MWF 10:40AM-11:45AM
-MUSC30B-01,Theory,Lit,Music,30877,"Pratorius,C.J.",Music Center 131,TuTh 11:40AM-12:45PM
+MUSC30B-01,"Theory,Lit,Music",30877,"Pratorius,C.J.",Music Center 131,TuTh 11:40AM-12:45PM
 MUSC51-01,Vocal Repertoire Class,30878,"Willey,S.K.",Music Center 131,TuTh 02:00PM-03:00PM
 MUSC51-02,Vocal Repertoire Class,30879,"Sinclair,E.V.",Music Center 131,TuTh 03:00PM-04:00PM
 MUSC52-01,Guitar Rep,45523,"Mallett,C.B.",,ter 131
@@ -1155,7 +1155,7 @@ PHYS6M-12,Intro Phys II Lab,30153,"Brown,G.S.",Thimann Lab 121,F 08:30AM-11:30AM
 PHYS9A-01,Intro Research Phys,31186,"Murray-Clay,R.",Sci & Engr Library 206,TuTh 01:30PM-03:05PM
 PHYS102-01,Modern Physics,30336,"Dhar,B.",N. Sci Annex 101,MWF 09:20AM-10:25AM
 PHYS107-01,IntroFluidDynamics,32599,"Brummell,N.H.",J Baskin Engr 156,TuTh 11:40AM-01:15PM
-PHYS110B-01,Elec, Magnet, Optic,30335,"Narayan,O.",N. Sci Annex 101,MWF 04:00PM-05:05PM
+PHYS110B-01,"Elec, Magnet, Optic",30335,"Narayan,O.",N. Sci Annex 101,MWF 04:00PM-05:05PM
 PHYS112-01,Therm & Stat Mechan,30333,"Sher,A.",Thim Lecture 001,TuTh 08:00AM-09:35AM
 PHYS115-01,Computational Phys,32150,"Nielsen,J.A.",Earth&Marine B214,MWF 12:00PM-01:05PM
 PHYS116A-01,Math Method Physics,30324,"Gignac,M.K.",Thim Lecture 001,MWF 02:40PM-03:45PM
@@ -1279,7 +1279,7 @@ SOCY196S-04,Senior Seminar,30404,"Bettie,J.",R Carson Acad 252,Tu 05:20PM-06:55P
 SOCY202-01,Contemp Sociol Theo,30403,"Hawthorne,C.",R Carson Acad 301,W 09:00AM-12:00PM
 SOCY204-01,Quantitative Analys,30402,"Pedroza,J.",R Carson Acad 301,M 09:00AM-12:00PM
 SOCY209-01,Cultural Forms,30401,"Bettie,J.",R Carson Acad 301,Tu 01:30PM-04:30PM
-SOCY260-01,Culture, Knowl,Powr,30400,"Reardon,J.E.",R Carson Acad 301,W 01:00PM-04:00PM
+SOCY260-01,"Culture, Knowl,Powr",30400,"Reardon,J.E.",R Carson Acad 301,W 01:00PM-04:00PM
 SOCY290W-01,Soc Analysis Work Grp,45460,"Dillon,L.L.",R Carson Acad 301,F 02:00PM-04:00PM
 SPAN1-01,Spanish: First Year,30217,"Lain,S.L.",Oakes Acad 222,MWF 12:00PM-01:05PM
 SPAN1-02,Spanish: First Year,30218,"Lain,S.L.",Oakes Acad 222,MWF 01:20PM-02:25PM
