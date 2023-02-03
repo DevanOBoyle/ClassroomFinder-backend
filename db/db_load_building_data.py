@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Loads class data into the database.
+Loads building data into the database.
 """
 
 import csv
@@ -23,72 +23,53 @@ except ImportError:
     sys.exit(1)
 
 
-def parse_csv(cursor, file: str, table: str, verbose: bool = False) -> None:
+def parse_csv(cursor, file: str, verbose: bool = False) -> None:
     """
     Parses a csv file and uploads its contents to the database.
 
     Args:
         cursor: A database cursor from a connection.
         file: The csv file to parse.
-        table: The table in the database to store the csv file data.
-        Must have columns 'code', 'name', 'number', 'instructor', 'room',
-        and 'days'.
         verbose: Verbose mode; prints what is happening to ``stdout``.
     """
     # Open the csv file and parse its contents.
-    # Each row is a 6-length list in the following order:
-    # - class code
-    # - class name
-    # - class number
-    # - instructor name
-    # - building and room
-    # - days and time
+    # Each row is a 2-length list in the following order:
+    # - building name
+    # - building PlaceID
     with open(file, 'r', newline='') as csv_file:
         reader = csv.reader(csv_file)
         for row in reader:
             # Split the row into its columns.
-            # Before inserting, fix any errors.
-            code, name, number, instructor, room, days = row
-
-            # If the room is an empty string, make it NULL (None).
-            if not len(room):
-                room = None
-            # Change "Cancelled Cancelled" to just "Cancelled".
-            if days == "Cancelled Cancelled":
-                days = days[:9]
+            name, placeid = row
 
             # Insert into the table.
             # This method prevents SQL-injection.
             # https://www.psycopg.org/docs/sql.html#module-usage
             if verbose:
                 print(
-                    f"Inserting class:\n"
-                    f"- Code: {code}\n"
+                    f"Inserting building:\n"
                     f"- Name: {name}\n"
-                    f"- Number: {number}\n"
-                    f"- Instructor(s): {instructor}\n"
-                    f"- Room: {room}\n"
-                    f"- Days: {days}"
+                    f"- PlaceID: {placeid}"
                 )
             cursor.execute(
                 sql.SQL(
                     '''
-                    INSERT INTO {}(code, name, number, instructor, room, days)
-                        VALUES (%s, %s, %s, %s, %s, %s)
+                    INSERT INTO buildings(name, placeid)
+                        VALUES (%s, %s)
                     '''
-                ).format(sql.Identifier(table.lower())),
-                (code, name, number, instructor, room, days)
+                ),
+                (name, placeid)
             )
             if verbose:
                 print(
-                    f"Successfully added {code}: {name}."
+                    f"Successfully added '{name}'."
                 )
     return
 
 
 def main() -> None:
     """
-    Loads class data into the database.
+    Loads building data into the database.
     """
     # Program defaults.
     db_host = "cfdb.cr6zou4a0wxq.us-west-1.rds.amazonaws.com"
@@ -111,10 +92,6 @@ def main() -> None:
     parser.add_argument(
         "file",
         help="the csv file that will be parsed"
-    )
-    parser.add_argument(
-        "tbl",
-        help="the table in the database that will hold the data"
     )
     parser.add_argument(
         "--db",
@@ -161,10 +138,10 @@ def main() -> None:
         if args.verbose:
             print(
                 f"Account '{args.user}' connected to host '{args.host}'.\n"
-                f"Loading data from '{args.file}' into table '{args.tbl}'...\n"
+                f"Loading data from '{args.file}' into table 'buildings'...\n"
             )
         with conn.cursor() as cur:
-            parse_csv(cur, args.file, args.tbl, args.verbose)
+            parse_csv(cur, args.file, args.verbose)
         if args.verbose:
             print(
                 "Inserted all data from csv file.\n"
