@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Backend for classroomfinder",
   "scripts": {
-    "start": "node ./functions/controllers/api/index",
+    "start": "node ./functions/api/index",
     "lint": "eslint . --max-warnings=0"
   },
   "repository": "https://github.com/DevanOBoyle/ClassroomFinder-backend",
