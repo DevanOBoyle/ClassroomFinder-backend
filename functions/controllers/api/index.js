@@ -1,6 +1,8 @@
-const client = require("../../utils/connection.js");
+const credentials = require("../../utils/connection.js");
 const express = require("express");
 const cors = require("cors");
+const { Client } = require("pg");
+const dotenv = require("dotenv");
 
 const app = express();
 app.disable("x-powered-by");
@@ -12,33 +14,40 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-// API CALLS HERE
-
-client.connect();
+dotenv.config();
 
 app.get("/buildings", async (req, res) => {
   try {
     // TO DO: Get query headers from postgreSQL
-    /*
-    const buildings = await client.query("Get building data", (err, result));
-    const buildingDocs = [];
-    buildings.forEach((doc) => {
-      data = doc.data();
-      buildingDocs.push({
-        //TO DO
-        name: data.name,
-      });
+    const client = new Client({
+      user: process.env.PGUSER,
+      host: process.env.PGHOST,
+      database: process.env.PGDATABASE,
+      password: process.env.PGPASSWORD,
+      port: process.env.PGPORT,
     });
-    
-    res.status(200).send({ status: 200, buildings: buildingDocs });
+
+    await client.connect();
+    console.log("connected");
+    const doc = await client.query(`SELECT * from buildings`, (error, result));
+    /*
+    const dummy_data = [
+      { name: "Engineering 2" },
+      { name: "Baskin Engineering" },
+      { name: "Bio Room" },
+      { name: "Mchenry Library" },
+      { name: "Science and Engineering Library" },
+      { name: "Stevenson" },
+      { name: "Thimaan Lecture Hall" },
+    ];
     */
-    res.status(200).send({ status: 200, buildings: "Hello" });
+    res.status(200).send({ status: 200, buildings: doc });
+    await client.end();
   } catch (err) {
     res.status(500).send({ status: 500, error: "Unable to grab building data" });
     functions.logger.log(`Unable to retrieve building data`);
   }
-  //client.end;
 });
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Listening on port ${port}`));
