@@ -4,7 +4,7 @@
 Loads class data into the database.
 """
 
-import csv
+import json
 import sys
 
 import argparse as ap
@@ -23,40 +23,68 @@ except ImportError:
     sys.exit(1)
 
 
-def parse_csv(cursor, file: str, table: str, verbose: bool = False) -> None:
+def parse_json(cursor, file: str, table: str, verbose: bool = False) -> None:
     """
-    Parses a csv file and uploads its contents to the database.
+    Parses a JSON file and uploads its contents to the database.
 
     Args:
         cursor: A database cursor from a connection.
-        file: The csv file to parse.
-        table: The table in the database to store the csv file data.
-        Must have columns 'code', 'name', 'number', 'instructor', 'room',
-        and 'days'.
+        file: The JSON file to parse.
+        table: The table in the database to store the JSON file data.
+        See "table_info.sql" for required columns.
         verbose: Verbose mode; prints what is happening to ``stdout``.
     """
-    # Open the csv file and parse its contents.
-    # Each row is a 6-length list in the following order:
-    # - class code
-    # - class name
-    # - class number
-    # - instructor name
-    # - building and room
-    # - days and time
-    with open(file, 'r', newline='') as csv_file:
-        reader = csv.reader(csv_file)
-        for row in reader:
-            # Split the row into its columns.
-            # Before inserting, fix any errors.
-            code, name, number, instructor, room, days = row
-
-            # If the room is an empty string, make it NULL (None).
-            if not len(room):
-                room = None
-            # Change "Cancelled Cancelled" to just "Cancelled".
-            if days == "Cancelled Cancelled":
-                days = days[:9]
-
+    # Open the JSON file as a large dictionary.
+    # The classes dictionary contains a list of individual classes
+    # with the respective information for each class.
+    with open(file, 'r', newline='') as json_file:
+        class_data = json.load(json_file)
+        for class_info in class_data['classes']:
+            # Insert into the table.
+            # This method prevents SQL-injection.
+            # https://www.psycopg.org/docs/sql.html#module-usage
+            if verbose:
+                print(
+                    f"Inserting class:\n"
+                    f"- Number: {class_info['number']}\n"
+                    f"- Code: {class_info['code']}\n"
+                    f"- Name: {class_info['name']}\n"
+                    f"- Instructor(s): {class_info['instructors']}\n"
+                    f"- Meeting(s): {class_info['meetings']}\n"
+                    f"- Mode: {class_info['mode']}\n"
+                    f"- Last Updated: {class_info['last_updated']}"
+                )
+            cursor.execute(
+                sql.SQL(
+                    '''
+                    INSERT INTO {}(
+                        number,
+                        code,
+                        name,
+                        instructors,
+                        meetings,
+                        mode,
+                        last_updated
+                    )
+                        VALUES (%s, %s, %s, %s, %s, %s, %s)
+                    '''
+                ).format(sql.Identifier(table.lower())),
+                (
+                    class_info['number'],
+                    class_info['code'],
+                    class_info['name'],
+                    class_info['instructors'],
+                    class_info['meetings'],
+                    class_info['mode'],
+                    class_info['last_updated']
+                )
+            )
+            if verbose:
+                print(
+                    f"Successfully added {class_info['code']}: "
+                    f"{class_info['name']}."
+                )
+        """
             # Insert into the table.
             # This method prevents SQL-injection.
             # https://www.psycopg.org/docs/sql.html#module-usage
@@ -83,6 +111,7 @@ def parse_csv(cursor, file: str, table: str, verbose: bool = False) -> None:
                 print(
                     f"Successfully added {code}: {name}."
                 )
+        """
     return
 
 
@@ -97,7 +126,7 @@ def main() -> None:
 
     # Parse command-line arguments.
     parser = ap.ArgumentParser(
-        description="Loads data from a csv file into a table in the database.",
+        description="Loads data from a JSON file into a table in the database.",
         formatter_class=ap.ArgumentDefaultsHelpFormatter
     )
     parser.add_argument(
@@ -110,7 +139,7 @@ def main() -> None:
     )
     parser.add_argument(
         "file",
-        help="the csv file that will be parsed"
+        help="the JSON file that will be parsed"
     )
     parser.add_argument(
         "tbl",
@@ -156,7 +185,7 @@ def main() -> None:
         sys.exit(1)
     else:
         # Attempt successful.
-        # Load csv file and upload its data to the database.
+        # Load JSON file and upload its data to the database.
         conn.autocommit = True  # Auto-commit transactions.
         if args.verbose:
             print(
@@ -164,10 +193,10 @@ def main() -> None:
                 f"Loading data from '{args.file}' into table '{args.tbl}'...\n"
             )
         with conn.cursor() as cur:
-            parse_csv(cur, args.file, args.tbl, args.verbose)
+            parse_json(cur, args.file, args.tbl, args.verbose)
         if args.verbose:
             print(
-                "Inserted all data from csv file.\n"
+                "\nInserted all data from JSON file.\n"
             )
         conn.close()
     return

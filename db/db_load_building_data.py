@@ -25,14 +25,14 @@ except ImportError:
 
 def parse_csv(cursor, file: str, verbose: bool = False) -> None:
     """
-    Parses a csv file and uploads its contents to the database.
+    Parses a CSV file and uploads its contents to the database.
 
     Args:
         cursor: A database cursor from a connection.
-        file: The csv file to parse.
+        file: The CSV file to parse.
         verbose: Verbose mode; prints what is happening to ``stdout``.
     """
-    # Open the csv file and parse its contents.
+    # Open the CSV file and parse its contents.
     # Each row is a 2-length list in the following order:
     # - building name
     # - building PlaceID
@@ -40,7 +40,7 @@ def parse_csv(cursor, file: str, verbose: bool = False) -> None:
         reader = csv.reader(csv_file)
         for row in reader:
             # Split the row into its columns.
-            name, placeid = row
+            name, place_id = row
 
             # Insert into the table.
             # This method prevents SQL-injection.
@@ -49,16 +49,16 @@ def parse_csv(cursor, file: str, verbose: bool = False) -> None:
                 print(
                     f"Inserting building:\n"
                     f"- Name: {name}\n"
-                    f"- PlaceID: {placeid}"
+                    f"- PlaceID: {place_id}"
                 )
             cursor.execute(
                 sql.SQL(
                     '''
-                    INSERT INTO buildings(name, placeid)
+                    INSERT INTO buildings(name, place_id)
                         VALUES (%s, %s)
                     '''
                 ),
-                (name, placeid)
+                (name, place_id)
             )
             if verbose:
                 print(
@@ -78,7 +78,7 @@ def main() -> None:
 
     # Parse command-line arguments.
     parser = ap.ArgumentParser(
-        description="Loads data from a csv file into a table in the database.",
+        description="Loads data from a CSV file into a table in the database.",
         formatter_class=ap.ArgumentDefaultsHelpFormatter
     )
     parser.add_argument(
@@ -91,7 +91,7 @@ def main() -> None:
     )
     parser.add_argument(
         "file",
-        help="the csv file that will be parsed"
+        help="the CSV file that will be parsed"
     )
     parser.add_argument(
         "--db",
@@ -133,7 +133,7 @@ def main() -> None:
         sys.exit(1)
     else:
         # Attempt successful.
-        # Load csv file and upload its data to the database.
+        # Load CSV file and upload its data to the database.
         conn.autocommit = True  # Auto-commit transactions.
         if args.verbose:
             print(
@@ -144,7 +144,7 @@ def main() -> None:
             parse_csv(cur, args.file, args.verbose)
         if args.verbose:
             print(
-                "Inserted all data from csv file.\n"
+                "\nInserted all data from CSV file.\n"
             )
         conn.close()
     return
