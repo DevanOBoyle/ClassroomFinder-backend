@@ -84,34 +84,6 @@ def parse_json(cursor, file: str, table: str, verbose: bool = False) -> None:
                     f"Successfully added {class_info['code']}: "
                     f"{class_info['name']}."
                 )
-        """
-            # Insert into the table.
-            # This method prevents SQL-injection.
-            # https://www.psycopg.org/docs/sql.html#module-usage
-            if verbose:
-                print(
-                    f"Inserting class:\n"
-                    f"- Code: {code}\n"
-                    f"- Name: {name}\n"
-                    f"- Number: {number}\n"
-                    f"- Instructor(s): {instructor}\n"
-                    f"- Room: {room}\n"
-                    f"- Days: {days}"
-                )
-            cursor.execute(
-                sql.SQL(
-                    '''
-                    INSERT INTO {}(code, name, number, instructor, room, days)
-                        VALUES (%s, %s, %s, %s, %s, %s)
-                    '''
-                ).format(sql.Identifier(table.lower())),
-                (code, name, number, instructor, room, days)
-            )
-            if verbose:
-                print(
-                    f"Successfully added {code}: {name}."
-                )
-        """
     return
 
 
@@ -126,7 +98,7 @@ def main() -> None:
 
     # Parse command-line arguments.
     parser = ap.ArgumentParser(
-        description="Loads data from a JSON file into a table in the database.",
+        description="Loads JSON data into a table in the database.",
         formatter_class=ap.ArgumentDefaultsHelpFormatter
     )
     parser.add_argument(
