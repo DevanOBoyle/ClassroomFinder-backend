@@ -204,9 +204,10 @@ def scrape_class_data(file: str, term: int, verbose: bool = False) -> None:
                 if "Instructor:" in ln:
                     s = ""
                     for i in range(ln.rfind("</div>") - 1, 0, -1):
-                        if ln[i] == " ":
+                        if ln[i] == "/":
                             break
                         s += ln[i]
+                    s = s[:-3]
                     instructors = s[::-1].split("<br>")
 
                     # Print to file.
