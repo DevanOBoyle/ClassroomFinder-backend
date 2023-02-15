@@ -38,27 +38,33 @@ app.get("/buildings", async (req, res) => {
   }
 });
 
-app.get("/classes", async (req, res) => {
-  try {
-    const client = new Client({
-      connectionString: process.env.CONNECTIONSTRING,
-    });
+query_classes("fall2022");
+query_classes("winter2023");
+query_classes("spring2023");
 
-    await client.connect();
-
-    client.query(`select * from classes_winter2023`, (error, response) => {
-      if (!error) {
-        res.status(200).send({ status: 200, classes: response.rows });
-      } else {
-        console.log("Error occured while querying class data");
-      }
-      client.end;
-    });
-  } catch (err) {
-    res.status(500).send({ status: 500, error: "Unable to grab class data" });
-    functions.logger.log(`Unable to class building data`);
-  }
-});
+function query_classes(quarter) {
+  app.get(`/${quarter}`, async (req, res) => {
+    try {
+      const client = new Client({
+        connectionString: process.env.CONNECTIONSTRING,
+      });
+  
+      await client.connect();
+  
+      client.query(`select * from classes_${quarter}`, (error, response) => {
+        if (!error) {
+          res.status(200).send({ status: 200, classes: response.rows });
+        } else {
+          console.log(`Error occured while querying ${quarter} data`);
+        }
+        client.end;
+      });
+    } catch (err) {
+      res.status(500).send({ status: 500, error: `Unable to grab ${quarter} data` });
+      functions.logger.log(`Unable to class ${quarter} data`);
+    }
+  });
+}
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Listening on port ${port}`));
