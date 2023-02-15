@@ -20,6 +20,49 @@ $$ LANGUAGE plpgsql;
 -- TABLE DEFINITIONS
 
 /**
+ * All classes for the quarter of Spring 2023.
+ *
+ * Columns:
+ * - number: The class number that is unique to every class instance.
+ * - code: The code associcated with a class (like "CSE115A-01").
+ * - name: The shorthand name for a class (like "Intro Software Eng").
+ * - instructors: An array of instructors teaching a class.
+ * - meetings: A two-dimensional array of {location, days and times} pairs.
+ * - mode: How the class is being taught.
+ * - last_updated: When a specific class entry was last updated.
+ *
+ * Constraints:
+ * - The class number is the primary key.
+ * - All class codes must be unique.
+ * - The class mode must be a supported mode.
+ *
+ * Notes:
+ * - The last_updated timestamp should be in UTC.
+ */
+CREATE TABLE IF NOT EXISTS classes_spring2023 (
+    number INTEGER,
+    code TEXT NOT NULL,
+    name TEXT NOT NULL,
+    instructors TEXT[],
+    meetings TEXT[][],
+    mode TEXT NOT NULL,
+    last_updated TIMESTAMP WITHOUT TIME ZONE 
+        DEFAULT DATE_TRUNC('second', (NOW() at time zone 'utc')),
+
+    PRIMARY KEY (number),
+    UNIQUE (code),
+
+    CONSTRAINT valid_mode
+        CHECK (mode IN (
+            'In Person',
+            'Hybrid',
+            'Asynchronous Online',
+            'Synchronous Online'
+            )
+        ) 
+);
+
+/**
  * All classes for the quarter of Winter 2023.
  *
  * Columns:
@@ -40,6 +83,49 @@ $$ LANGUAGE plpgsql;
  * - The last_updated timestamp should be in UTC.
  */
 CREATE TABLE IF NOT EXISTS classes_winter2023 (
+    number INTEGER,
+    code TEXT NOT NULL,
+    name TEXT NOT NULL,
+    instructors TEXT[],
+    meetings TEXT[][],
+    mode TEXT NOT NULL,
+    last_updated TIMESTAMP WITHOUT TIME ZONE 
+        DEFAULT DATE_TRUNC('second', (NOW() at time zone 'utc')),
+
+    PRIMARY KEY (number),
+    UNIQUE (code),
+
+    CONSTRAINT valid_mode
+        CHECK (mode IN (
+            'In Person',
+            'Hybrid',
+            'Asynchronous Online',
+            'Synchronous Online'
+            )
+        ) 
+);
+
+/**
+ * All classes for the quarter of Fall 2022.
+ *
+ * Columns:
+ * - number: The class number that is unique to every class instance.
+ * - code: The code associcated with a class (like "CSE115A-01").
+ * - name: The shorthand name for a class (like "Intro Software Eng").
+ * - instructors: An array of instructors teaching a class.
+ * - meetings: A two-dimensional array of {location, days and times} pairs.
+ * - mode: How the class is being taught.
+ * - last_updated: When a specific class entry was last updated.
+ *
+ * Constraints:
+ * - The class number is the primary key.
+ * - All class codes must be unique.
+ * - The class mode must be a supported mode.
+ *
+ * Notes:
+ * - The last_updated timestamp should be in UTC.
+ */
+CREATE TABLE IF NOT EXISTS classes_fall2022 (
     number INTEGER,
     code TEXT NOT NULL,
     name TEXT NOT NULL,
@@ -96,9 +182,27 @@ ALTER SEQUENCE buildings_id_seq OWNED BY buildings.id;
 
 /**
  * Trigger to update the last_updated row for a specific class instance
+ * for a Spring 2023 class when an UPDATE statement to a class is received.
+ */
+CREATE OR REPLACE TRIGGER update_timestamp_classes_spring2023
+    BEFORE UPDATE ON classes_spring2023
+    FOR EACH ROW
+    EXECUTE FUNCTION update_timestamp();
+
+/**
+ * Trigger to update the last_updated row for a specific class instance
  * for a Winter 2023 class when an UPDATE statement to a class is received.
  */
 CREATE OR REPLACE TRIGGER update_timestamp_classes_winter2023
     BEFORE UPDATE ON classes_winter2023
+    FOR EACH ROW
+    EXECUTE FUNCTION update_timestamp();
+
+/**
+ * Trigger to update the last_updated row for a specific class instance
+ * for a Fall 2022 class when an UPDATE statement to a class is received.
+ */
+CREATE OR REPLACE TRIGGER update_timestamp_classes_fall2022
+    BEFORE UPDATE ON classes_fall2022
     FOR EACH ROW
     EXECUTE FUNCTION update_timestamp();
