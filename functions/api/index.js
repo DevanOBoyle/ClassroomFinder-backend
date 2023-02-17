@@ -38,5 +38,31 @@ app.get("/buildings", async (req, res) => {
   }
 });
 
+// query_classes("fall2022");
+// query_classes("winter2023");
+// query_classes("spring2023");
+
+app.get("/classes/:term", async (req, res) => {
+  try {
+    const client = new Client({
+      connectionString: process.env.CONNECTIONSTRING,
+    });
+
+    await client.connect();
+
+    client.query(`select * from classes_${req.params.term}`, (error, response) => {
+      if (!error) {
+        res.status(200).send({ status: 200, classes: response.rows });
+      } else {
+        console.log(`Error occured while querying ${req.params.term} data`);
+      }
+      client.end;
+    });
+  } catch (err) {
+    res.status(500).send({ status: 500, error: `Unable to grab ${req.params.term} data` });
+    functions.logger.log(`Unable to class ${req.params.term} data`);
+  }
+});
+
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Listening on port ${port}`));
