@@ -48,9 +48,9 @@ function query_classes(quarter) {
       const client = new Client({
         connectionString: process.env.CONNECTIONSTRING,
       });
-  
+
       await client.connect();
-  
+
       client.query(`select * from classes_${quarter}`, (error, response) => {
         if (!error) {
           res.status(200).send({ status: 200, classes: response.rows });
