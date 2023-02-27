@@ -23,15 +23,21 @@ except ImportError:
     sys.exit(1)
 
 
-def parse_json(cursor, file: str, table: str, verbose: bool = False) -> None:
+def parse_json(
+        cursor,
+        file: str,
+        term: str,
+        verbose: bool = False
+        ) -> None:
     """
     Parses a JSON file and uploads its contents to the database.
 
     Args:
         cursor: A database cursor from a connection.
         file: The JSON file to parse.
-        table: The table in the database to store the JSON file data.
+        term: The term associated with the data.
         See "table_info.sql" for required columns.
+        room: Handle room data as well.
         verbose: Verbose mode; prints what is happening to ``stdout``.
     """
     # Open the JSON file as a large dictionary.
@@ -54,6 +60,8 @@ def parse_json(cursor, file: str, table: str, verbose: bool = False) -> None:
                     f"- Mode: {class_info['mode']}\n"
                     f"- Last Updated: {class_info['last_updated']}"
                 )
+
+            # First insert class information.
             cursor.execute(
                 sql.SQL(
                     '''
@@ -61,24 +69,95 @@ def parse_json(cursor, file: str, table: str, verbose: bool = False) -> None:
                         number,
                         code,
                         name,
-                        instructors,
-                        meetings,
                         mode,
                         last_updated
                     )
-                        VALUES (%s, %s, %s, %s, %s, %s, %s)
+                        VALUES (%s, %s, %s, %s, %s)
                     '''
-                ).format(sql.Identifier(table.lower())),
+                ).format(sql.Identifier(f'classes_{term.lower()}')),
                 (
                     class_info['number'],
                     class_info['code'],
                     class_info['name'],
-                    class_info['instructors'],
-                    class_info['meetings'],
                     class_info['mode'],
                     class_info['last_updated']
                 )
             )
+
+            # Then add all instructor information.
+            for instructor in class_info['instructors']:
+                cursor.execute(
+                    sql.SQL(
+                        '''
+                        INSERT INTO {}(
+                            class_number,
+                            instructor
+                        )
+                            VALUES (%s, %s)
+                        '''
+                    ).format(sql.Identifier(f'instructors_{term.lower()}')),
+                    (
+                        class_info['number'],
+                        instructor
+                    )
+                )
+
+            # Finally, add all meeting information.
+            for meeting in class_info['meetings']:
+                if len(meeting) == 3:  # Multiple times in one place.
+                    cursor.execute(
+                        sql.SQL(
+                            '''
+                            INSERT INTO {}(
+                                class_number,
+                                meeting_place,
+                                meeting_time
+                            )
+                                VALUES (%s, %s, %s)
+                            '''
+                        ).format(sql.Identifier(f'meetings_{term.lower()}')),
+                        (
+                            class_info['number'],
+                            meeting[0],
+                            meeting[1]
+                        )
+                    )
+                    cursor.execute(
+                        sql.SQL(
+                            '''
+                            INSERT INTO {}(
+                                class_number,
+                                meeting_place,
+                                meeting_time
+                            )
+                                VALUES (%s, %s, %s)
+                            '''
+                        ).format(sql.Identifier(f'meetings_{term.lower()}')),
+                        (
+                            class_info['number'],
+                            meeting[0],
+                            meeting[2]
+                        )
+                    )
+                else:
+                    cursor.execute(
+                        sql.SQL(
+                            '''
+                            INSERT INTO {}(
+                                class_number,
+                                meeting_place,
+                                meeting_time
+                            )
+                                VALUES (%s, %s, %s)
+                            '''
+                        ).format(sql.Identifier(f'meetings_{term.lower()}')),
+                        (
+                            class_info['number'],
+                            meeting[0],
+                            meeting[1]
+                        )
+                    )
+
             if verbose:
                 print(
                     f"Successfully added {class_info['code']}: "
@@ -114,8 +193,8 @@ def main() -> None:
         help="the JSON file that will be parsed"
     )
     parser.add_argument(
-        "tbl",
-        help="the table in the database that will hold the data"
+        "term",
+        help="the term to upload associated class data to"
     )
     parser.add_argument(
         "--db",
@@ -162,10 +241,10 @@ def main() -> None:
         if args.verbose:
             print(
                 f"Account '{args.user}' connected to host '{args.host}'.\n"
-                f"Loading data from '{args.file}' into table '{args.tbl}'...\n"
+                f"Loading data from '{args.file}'...\n"
             )
         with conn.cursor() as cur:
-            parse_json(cur, args.file, args.tbl, args.verbose)
+            parse_json(cur, args.file, args.term, args.verbose)
         if args.verbose:
             print(
                 "\nInserted all data from JSON file.\n"

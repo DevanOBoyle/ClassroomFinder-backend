@@ -159,7 +159,13 @@
             "name": "McHenry Library",
             "place_id": "ChIJk7eypKFBjoAR87wpNgAjQek",
             "other_names": [
-                "McHenry Lib",
+                "McHenry Lib"
+            ]
+        },
+        {
+            "name": "McHenry Classroom Building",
+            "place_id": "ChIJk7eypKFBjoAR87wpNgAjQek",
+            "other_names": [
                 "McHenry Clrm"
             ]
         },
@@ -211,6 +217,13 @@
             "other_names": []
         },
         {
+            "name": "Cowell Commons Building",
+            "place_id": "ChIJAVV0haZBjoARvMcbjbOCfUo",
+            "other_names": [
+                "Cowell Com"
+            ]
+        },
+        {
             "name": "Thimann Labs",
             "place_id": "ChIJj8X8459BjoARjkqsXKjjxtE",
             "other_names": [
@@ -225,6 +238,13 @@
             ]
         },
         {
+            "name": "Theater Arts Main Stage Building",
+            "place_id": "ChIJU2Jrx7VBjoARxU_OXqsZsJs",
+            "other_names": [
+                "TA Mainstage"
+            ]
+        },
+        {
             "name": "Theater Arts Experimental Theater",
             "place_id": "ChIJ7zpJbp9BjoARcaSHWm9cRpE",
             "other_names": [
@@ -232,9 +252,39 @@
             ]
         },
         {
-            "name": "Theater Arts Center",
+            "name": "Theater Arts Second Stage Building",
+            "place_id": "ChIJEZlpQ59BjoARXSuPWPT3gZs",
+            "other_names": [
+                "TA 2nd Stage"
+            ]
+        },
+        {
+            "name": "Theater Arts Drama Building",
             "place_id": "ChIJoxjba59BjoAR4W-yjpaB94s",
-            "other_names": []
+            "other_names": [
+                "TA Drama"
+            ]
+        },
+        {
+            "name": "Theater Arts Studio Building",
+            "place_id": "ChIJoxjba59BjoAR4W-yjpaB94s",
+            "other_names": [
+                "TA Studio"
+            ]
+        },
+        {
+            "name": "Theater Arts Classroom Building",
+            "place_id": "ChIJ7zpJbp9BjoARcaSHWm9cRpE",
+            "other_names": [
+                "TA Lecture"
+            ]
+        },
+        {
+            "name": "Theater Arts Office Building",
+            "place_id": "ChIJEZlpQ59BjoARXSuPWPT3gZs",
+            "other_names": [
+                "TA Offices"
+            ]
         },
         {
             "name": "Visual Arts Research Facility",
@@ -253,13 +303,6 @@
             "name": "Hahn Student Services",
             "place_id": "ChIJ5WaXa6FBjoARz3jyS-_t22A",
             "other_names": []
-        },
-        {
-            "name": "Theater Arts Second Stage",
-            "place_id": "ChIJEZlpQ59BjoARXSuPWPT3gZs",
-            "other_names": [
-                "TA 2nd Stage"
-            ]
         },
         {
             "name": "Elena Baskin Visual Arts Center",
@@ -361,6 +404,68 @@
         {
             "name": "Kresge Annex Building B",
             "place_id": "ChIJIzmtIZ5BjoARl57v8tERyw0",
+            "other_names": []
+        },
+        {
+            "name": "West Tennis Courts",
+            "place_id": "ChIJo98-4m1BjoAR0TEaxp-Ag8Q",
+            "other_names": [
+                "West Tennis Ct"
+            ]
+        },
+        {
+            "name": "East Tennis Courts",
+            "place_id": "ChIJC2yclZ1BjoAR5Y6gZ3aCDpg",
+            "other_names": [
+                "E Tennis Ct"
+            ]
+        },
+        {
+            "name": "50-Meter Pool",
+            "place_id": "ChIJfXnRaqRBjoARTj3pZCEeB5M",
+            "other_names": [
+                "50 Mtr Pool",
+                "Fifty Meter Pool",
+                "Fifty Mtr Pool"
+            ]
+        },
+        {
+            "name": "East Sand Courts",
+            "place_id": "ChIJIThdVKRBjoAR2STgjU2evz8",
+            "other_names": [
+                "East Sand Court"
+            ]
+        },
+        {
+            "name": "East Field",
+            "place_id": "ChIJIThdVKRBjoAR2STgjU2evz8",
+            "other_names": []
+        },
+        {
+            "name": "Athletics & Recreation Fitness Center",
+            "place_id": "ChIJVRW6fKRBjoARlWkP543vP7g",
+            "other_names": [
+                "Athletics and Recreation Fitness Center",
+                "OPERS Fitness Center",
+                "East Gym"
+            ]
+        },
+        {
+            "name": "Athletics & Recreation Multi-Purpose Room",
+            "place_id": "ChIJGapeeqRBjoARtuFWAVAOGno",
+            "other_names": [
+                "Athletics and Recreation Multi-Purpose Room",
+                "OPERS Multi Purpose"
+            ]
+        },
+        {
+            "name": "West Field House",
+            "place_id": "ChIJD1EkHJlBjoARcljZO-vT6Sk",
+            "other_names": []
+        },
+        {
+            "name": "East Field House",
+            "place_id": "ChIJR-yPFaRBjoARMxZJxzeRcPw",
             "other_names": []
         }
     ]
