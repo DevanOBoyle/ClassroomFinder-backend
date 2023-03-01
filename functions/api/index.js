@@ -50,7 +50,8 @@ app.get("/rooms", async (req, res) => {
 
     await client.connect();
 
-    client.query(`select * from rooms R join buildings B on R.building_number = B.number`, (error, response) => {
+    client.query(`select R.number "room_number", * 
+    from rooms R join buildings B on R.building_number = B.number`, (error, response) => {
       if (!error) {
         res.status(200).send({ status: 200, buildings: response.rows });
       } else {
