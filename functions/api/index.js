@@ -42,6 +42,28 @@ app.get("/buildings", async (req, res) => {
 // query_classes("winter2023");
 // query_classes("spring2023");
 
+app.get("/rooms", async (req, res) => {
+  try {
+    const client = new Client({
+      connectionString: process.env.CONNECTIONSTRING,
+    });
+
+    await client.connect();
+
+    client.query(`select * from rooms`, (error, response) => {
+      if (!error) {
+        res.status(200).send({ status: 200, buildings: response.rows });
+      } else {
+        console.log("Error occured while querying room data");
+      }
+      client.end;
+    });
+  } catch (err) {
+    res.status(500).send({ status: 500, error: "Unable to grab room data" });
+    functions.logger.log(`Unable to retrieve room data`);
+  }
+});
+
 app.get("/classes/:term", async (req, res) => {
   try {
     const client = new Client({
