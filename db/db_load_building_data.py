@@ -4,7 +4,7 @@
 Loads building data into the database.
 """
 
-import csv
+import json
 import sys
 
 import argparse as ap
@@ -23,46 +23,46 @@ except ImportError:
     sys.exit(1)
 
 
-def parse_csv(cursor, file: str, verbose: bool = False) -> None:
+def parse_json(cursor, file: str, verbose: bool = False) -> None:
     """
-    Parses a csv file and uploads its contents to the database.
+    Parses a JSON file and uploads its contents to the database.
 
     Args:
         cursor: A database cursor from a connection.
-        file: The csv file to parse.
+        file: The JSON file to parse.
         verbose: Verbose mode; prints what is happening to ``stdout``.
     """
-    # Open the csv file and parse its contents.
-    # Each row is a 2-length list in the following order:
-    # - building name
-    # - building PlaceID
-    with open(file, 'r', newline='') as csv_file:
-        reader = csv.reader(csv_file)
-        for row in reader:
-            # Split the row into its columns.
-            name, placeid = row
-
+    # Open the JSON file as a dictionary.
+    # The buildings dictionary contains a list of individual buildings
+    # with the respective information for each building.
+    with open(file, 'r', newline='') as json_file:
+        building_data = json.load(json_file)
+        for building_info in building_data['buildings']:
             # Insert into the table.
             # This method prevents SQL-injection.
             # https://www.psycopg.org/docs/sql.html#module-usage
             if verbose:
                 print(
                     f"Inserting building:\n"
-                    f"- Name: {name}\n"
-                    f"- PlaceID: {placeid}"
+                    f"- Name: {building_info['name']}\n"
+                    f"- PlaceID: {building_info['place_id']}"
                 )
             cursor.execute(
                 sql.SQL(
                     '''
-                    INSERT INTO buildings(name, placeid)
-                        VALUES (%s, %s)
+                    INSERT INTO buildings(name, place_id, other_names)
+                        VALUES (%s, %s, %s)
                     '''
                 ),
-                (name, placeid)
+                (
+                    building_info['name'],
+                    building_info['place_id'],
+                    building_info['other_names']
+                )
             )
             if verbose:
                 print(
-                    f"Successfully added '{name}'."
+                    f"Successfully added {building_info['name']}."
                 )
     return
 
@@ -78,7 +78,7 @@ def main() -> None:
 
     # Parse command-line arguments.
     parser = ap.ArgumentParser(
-        description="Loads data from a csv file into a table in the database.",
+        description="Loads data from a JSON file into a table in the database.",
         formatter_class=ap.ArgumentDefaultsHelpFormatter
     )
     parser.add_argument(
@@ -91,7 +91,7 @@ def main() -> None:
     )
     parser.add_argument(
         "file",
-        help="the csv file that will be parsed"
+        help="the JSON file that will be parsed"
     )
     parser.add_argument(
         "--db",
@@ -133,7 +133,7 @@ def main() -> None:
         sys.exit(1)
     else:
         # Attempt successful.
-        # Load csv file and upload its data to the database.
+        # Load JSON file and upload its data to the database.
         conn.autocommit = True  # Auto-commit transactions.
         if args.verbose:
             print(
@@ -141,10 +141,10 @@ def main() -> None:
                 f"Loading data from '{args.file}' into table 'buildings'...\n"
             )
         with conn.cursor() as cur:
-            parse_csv(cur, args.file, args.verbose)
+            parse_json(cur, args.file, args.verbose)
         if args.verbose:
             print(
-                "Inserted all data from csv file.\n"
+                "\nInserted all data from JSON file.\n"
             )
         conn.close()
     return

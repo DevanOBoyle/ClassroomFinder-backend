@@ -4,7 +4,7 @@
 Loads class data into the database.
 """
 
-import csv
+import json
 import sys
 
 import argparse as ap
@@ -23,65 +23,145 @@ except ImportError:
     sys.exit(1)
 
 
-def parse_csv(cursor, file: str, table: str, verbose: bool = False) -> None:
+def parse_json(
+        cursor,
+        file: str,
+        term: str,
+        verbose: bool = False
+        ) -> None:
     """
-    Parses a csv file and uploads its contents to the database.
+    Parses a JSON file and uploads its contents to the database.
 
     Args:
         cursor: A database cursor from a connection.
-        file: The csv file to parse.
-        table: The table in the database to store the csv file data.
-        Must have columns 'code', 'name', 'number', 'instructor', 'room',
-        and 'days'.
+        file: The JSON file to parse.
+        term: The term associated with the data.
+        See "table_info.sql" for required columns.
+        room: Handle room data as well.
         verbose: Verbose mode; prints what is happening to ``stdout``.
     """
-    # Open the csv file and parse its contents.
-    # Each row is a 6-length list in the following order:
-    # - class code
-    # - class name
-    # - class number
-    # - instructor name
-    # - building and room
-    # - days and time
-    with open(file, 'r', newline='') as csv_file:
-        reader = csv.reader(csv_file)
-        for row in reader:
-            # Split the row into its columns.
-            # Before inserting, fix any errors.
-            code, name, number, instructor, room, days = row
-
-            # If the room is an empty string, make it NULL (None).
-            if not len(room):
-                room = None
-            # Change "Cancelled Cancelled" to just "Cancelled".
-            if days == "Cancelled Cancelled":
-                days = days[:9]
-
+    # Open the JSON file as a large dictionary.
+    # The classes dictionary contains a list of individual classes
+    # with the respective information for each class.
+    with open(file, 'r', newline='') as json_file:
+        class_data = json.load(json_file)
+        for class_info in class_data['classes']:
             # Insert into the table.
             # This method prevents SQL-injection.
             # https://www.psycopg.org/docs/sql.html#module-usage
             if verbose:
                 print(
                     f"Inserting class:\n"
-                    f"- Code: {code}\n"
-                    f"- Name: {name}\n"
-                    f"- Number: {number}\n"
-                    f"- Instructor(s): {instructor}\n"
-                    f"- Room: {room}\n"
-                    f"- Days: {days}"
+                    f"- Number: {class_info['number']}\n"
+                    f"- Code: {class_info['code']}\n"
+                    f"- Name: {class_info['name']}\n"
+                    f"- Instructor(s): {class_info['instructors']}\n"
+                    f"- Meeting(s): {class_info['meetings']}\n"
+                    f"- Mode: {class_info['mode']}\n"
+                    f"- Last Updated: {class_info['last_updated']}"
                 )
+
+            # First insert class information.
             cursor.execute(
                 sql.SQL(
                     '''
-                    INSERT INTO {}(code, name, number, instructor, room, days)
-                        VALUES (%s, %s, %s, %s, %s, %s)
+                    INSERT INTO {}(
+                        number,
+                        code,
+                        name,
+                        mode,
+                        last_updated
+                    )
+                        VALUES (%s, %s, %s, %s, %s)
                     '''
-                ).format(sql.Identifier(table.lower())),
-                (code, name, number, instructor, room, days)
+                ).format(sql.Identifier(f'classes_{term.lower()}')),
+                (
+                    class_info['number'],
+                    class_info['code'],
+                    class_info['name'],
+                    class_info['mode'],
+                    class_info['last_updated']
+                )
             )
+
+            # Then add all instructor information.
+            for instructor in class_info['instructors']:
+                cursor.execute(
+                    sql.SQL(
+                        '''
+                        INSERT INTO {}(
+                            class_number,
+                            instructor
+                        )
+                            VALUES (%s, %s)
+                        '''
+                    ).format(sql.Identifier(f'instructors_{term.lower()}')),
+                    (
+                        class_info['number'],
+                        instructor
+                    )
+                )
+
+            # Finally, add all meeting information.
+            for meeting in class_info['meetings']:
+                if len(meeting) == 3:  # Multiple times in one place.
+                    cursor.execute(
+                        sql.SQL(
+                            '''
+                            INSERT INTO {}(
+                                class_number,
+                                meeting_place,
+                                meeting_time
+                            )
+                                VALUES (%s, %s, %s)
+                            '''
+                        ).format(sql.Identifier(f'meetings_{term.lower()}')),
+                        (
+                            class_info['number'],
+                            meeting[0],
+                            meeting[1]
+                        )
+                    )
+                    cursor.execute(
+                        sql.SQL(
+                            '''
+                            INSERT INTO {}(
+                                class_number,
+                                meeting_place,
+                                meeting_time
+                            )
+                                VALUES (%s, %s, %s)
+                            '''
+                        ).format(sql.Identifier(f'meetings_{term.lower()}')),
+                        (
+                            class_info['number'],
+                            meeting[0],
+                            meeting[2]
+                        )
+                    )
+                else:
+                    cursor.execute(
+                        sql.SQL(
+                            '''
+                            INSERT INTO {}(
+                                class_number,
+                                meeting_place,
+                                meeting_time
+                            )
+                                VALUES (%s, %s, %s)
+                            '''
+                        ).format(sql.Identifier(f'meetings_{term.lower()}')),
+                        (
+                            class_info['number'],
+                            meeting[0],
+                            meeting[1]
+                        )
+                    )
+
             if verbose:
                 print(
-                    f"Successfully added {code}: {name}."
+                    f"Successfully added {class_info['code']}: "
+                    f"{class_info['name']}."
                 )
     return
 
@@ -97,7 +177,7 @@ def main() -> None:
 
     # Parse command-line arguments.
     parser = ap.ArgumentParser(
-        description="Loads data from a csv file into a table in the database.",
+        description="Loads JSON data into a table in the database.",
         formatter_class=ap.ArgumentDefaultsHelpFormatter
     )
     parser.add_argument(
@@ -110,11 +190,11 @@ def main() -> None:
     )
     parser.add_argument(
         "file",
-        help="the csv file that will be parsed"
+        help="the JSON file that will be parsed"
     )
     parser.add_argument(
-        "tbl",
-        help="the table in the database that will hold the data"
+        "term",
+        help="the term to upload associated class data to"
     )
     parser.add_argument(
         "--db",
@@ -156,18 +236,18 @@ def main() -> None:
         sys.exit(1)
     else:
         # Attempt successful.
-        # Load csv file and upload its data to the database.
+        # Load JSON file and upload its data to the database.
         conn.autocommit = True  # Auto-commit transactions.
         if args.verbose:
             print(
                 f"Account '{args.user}' connected to host '{args.host}'.\n"
-                f"Loading data from '{args.file}' into table '{args.tbl}'...\n"
+                f"Loading data from '{args.file}'...\n"
             )
         with conn.cursor() as cur:
-            parse_csv(cur, args.file, args.tbl, args.verbose)
+            parse_json(cur, args.file, args.term, args.verbose)
         if args.verbose:
             print(
-                "Inserted all data from csv file.\n"
+                "\nInserted all data from JSON file.\n"
             )
         conn.close()
     return

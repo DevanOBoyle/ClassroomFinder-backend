@@ -1,0 +1,472 @@
+{
+    "buildings": [
+        {
+            "name": "Digital Arts Research Center",
+            "place_id": "ChIJ3YlSAqJBjoARXaGEJ_wVOPo",
+            "other_names": [
+                "Digital Arts"
+            ]
+        },
+        {
+            "name": "Humanities Lecture Hall",
+            "place_id": "ChIJXwWWKKdBjoAR6x9x5mIChLU",
+            "other_names": [
+                "Humn Lecture Hall"
+            ]
+        },
+        {
+            "name": "Humanities and Social Sciences Building",
+            "place_id": "ChIJKWw5KadBjoAROYyzSCihuWs",
+            "other_names": [
+                "Hum & Soc Sci",
+                "Hum and Soc Sci"
+            ]
+        },
+        {
+            "name": "Humanities 1 Building",
+            "place_id": "ChIJ13Hy2aZBjoARJL5KMbfx3MA",
+            "other_names": [
+                "Humanities 1"
+            ]
+        },
+        {
+            "name": "Interdisciplinary Sciences Building",
+            "place_id": "ChIJZxiLBqBBjoARCip_gh0XuNw",
+            "other_names": [
+                "ISB"
+            ]
+        },
+        {
+            "name": "Music Center",
+            "place_id": "ChIJDQX0C6JBjoARJrzmWFeRuSU",
+            "other_names": []
+        },
+        {
+            "name": "Cowell Academic Building",
+            "place_id": "ChIJabrRfKZBjoARSb2rGrQiZr8",
+            "other_names": [
+                "Cowell Acad"
+            ]
+        },
+        {
+            "name": "Oakes Academic Building",
+            "place_id": "ChIJtcHMOJhBjoARenWkIXKZTlw",
+            "other_names": [
+                "Oakes Acad"
+            ]
+        },
+        {
+            "name": "Merrill Academic Building",
+            "place_id": "ChIJ32VmE6dBjoAR1nD8mPfhfuc",
+            "other_names": [
+                "Merrill Acad"
+            ]
+        },
+        {
+            "name": "Porter Academic Building",
+            "place_id": "ChIJvRMx4KpBjoARcipcUkhYZQg",
+            "other_names": [
+                "Porter Acad"
+            ]
+        },
+        {
+            "name": "Rachel Carson Academic Building",
+            "place_id": "ChIJA5NfM41BjoAR3gw5dCqP3uA",
+            "other_names": [
+                "R Carson Acad",
+                "R. Carson Acad"
+            ]
+        },
+        {
+            "name": "Stevenson Academic Building",
+            "place_id": "ChIJX8zMcKZBjoARIjaoqFXSrjI",
+            "other_names": [
+                "Steven Acad"
+            ]
+        },
+        {
+            "name": "Crown Classroom Building",
+            "place_id": "ChIJlRrUUadBjoARkE0FXFzrvMw",
+            "other_names": [
+                "Crown Clrm"
+            ]
+        },
+        {
+            "name": "Cowell Classroom Building",
+            "place_id": "ChIJ3XghLDNBjoARFiMk2Mbq5-E",
+            "other_names": [
+                "Cowell Clrm"
+            ]
+        },
+        {
+            "name": "Kresge Classroom Building",
+            "place_id": "ChIJiwMq7nVBjoARkpi46Sn__gQ",
+            "other_names": [
+                "Kresge Clrm"
+            ]
+        },
+        {
+            "name": "Stevenson Library",
+            "place_id": "ChIJycRZcaZBjoARarEEyRIH4Bs",
+            "other_names": [
+                "Steven Lib"
+            ]
+        },
+        {
+            "name": "Natural Sciences 2 Annex",
+            "place_id": "ChIJVXVy_59BjoARLm5yuqp9dDk",
+            "other_names": [
+                "N. Sci Annex",
+                "N Sci Annex"
+            ]
+        },
+        {
+            "name": "Engineering 2 Building",
+            "place_id": "ChIJ2_4c5XRBjoAR7iUn2qxSw14",
+            "other_names": [
+                "Engineer 2"
+            ]
+        },
+        {
+            "name": "Social Sciences 2 Building",
+            "place_id": "ChIJjxsi_QpBjoARorQrq5ho8y4",
+            "other_names": [
+                "Soc Sci 2"
+            ]
+        },
+        {
+            "name": "Jack Baskin Engineering Auditorium",
+            "place_id": "ChIJCXluInVBjoARXmKm8WSQRNk",
+            "other_names": [
+                "J Bask Aud"
+            ]
+        },
+        {
+            "name": "Hahn Art Facility",
+            "place_id": "ChIJb0OQ9qZBjoAR94U1aPFDWfQ",
+            "other_names": []
+        },
+        {
+            "name": "Earth and Marine Sciences Building",
+            "place_id": "ChIJyU0VFaBBjoAR6PC5UGhQ4Oo",
+            "other_names": [
+                "Earth&Marine",
+                "Earth & Marine",
+                "Earth and Marine"
+            ]
+        },
+        {
+            "name": "McHenry Library",
+            "place_id": "ChIJk7eypKFBjoAR87wpNgAjQek",
+            "other_names": [
+                "McHenry Lib"
+            ]
+        },
+        {
+            "name": "McHenry Classroom Building",
+            "place_id": "ChIJk7eypKFBjoAR87wpNgAjQek",
+            "other_names": [
+                "McHenry Clrm"
+            ]
+        },
+        {
+            "name": "Physical Sciences Building",
+            "place_id": "ChIJO5ZnR3VBjoARXKjPwXMugvE",
+            "other_names": [
+                "PhysSciences",
+                "Phys Sciences"
+            ]
+        },
+        {
+            "name": "Sinsheimer Labs",
+            "place_id": "ChIJk61FV3VBjoAR60vQw_XE5Os",
+            "other_names": [
+                "Sinsheimer Lb",
+                "Sinsheimer Lab"
+            ]
+        },
+        {
+            "name": "Gamelan Studio",
+            "place_id": "ChIJbwp1D6JBjoARrtq8R11mxwY",
+            "other_names": [
+                "Gamelan Stu"
+            ]
+        },
+        {
+            "name": "Jack Baskin Engineering Building",
+            "place_id": "ChIJUfzq4HRBjoARZyoPLQd-ORM",
+            "other_names": [
+                "J Baskin Engr"
+            ]
+        },
+        {
+            "name": "Communications Building",
+            "place_id": "ChIJi9OaKXVBjoAR69nXF9zif4c",
+            "other_names": [
+                "Commun Bldg"
+            ]
+        },
+        {
+            "name": "Media Theater",
+            "place_id": "ChIJK2ubaZ9BjoARJ2TGgiqsjKA",
+            "other_names": []
+        },
+        {
+            "name": "Cowell Computer Lab",
+            "place_id": "ChIJlbasy6ZBjoAR8PhXRbSULbM",
+            "other_names": []
+        },
+        {
+            "name": "Cowell Commons Building",
+            "place_id": "ChIJAVV0haZBjoARvMcbjbOCfUo",
+            "other_names": [
+                "Cowell Com"
+            ]
+        },
+        {
+            "name": "Thimann Labs",
+            "place_id": "ChIJj8X8459BjoARjkqsXKjjxtE",
+            "other_names": [
+                "Thimann Lab"
+            ]
+        },
+        {
+            "name": "Social Sciences 1 Building",
+            "place_id": "ChIJES0MqgtBjoARwrgoMTg248U",
+            "other_names": [
+                "Soc Sci 1"
+            ]
+        },
+        {
+            "name": "Theater Arts Main Stage Building",
+            "place_id": "ChIJU2Jrx7VBjoARxU_OXqsZsJs",
+            "other_names": [
+                "TA Mainstage"
+            ]
+        },
+        {
+            "name": "Theater Arts Experimental Theater",
+            "place_id": "ChIJ7zpJbp9BjoARcaSHWm9cRpE",
+            "other_names": [
+                "TA Exp Theater"
+            ]
+        },
+        {
+            "name": "Theater Arts Second Stage Building",
+            "place_id": "ChIJEZlpQ59BjoARXSuPWPT3gZs",
+            "other_names": [
+                "TA 2nd Stage"
+            ]
+        },
+        {
+            "name": "Theater Arts Drama Building",
+            "place_id": "ChIJoxjba59BjoAR4W-yjpaB94s",
+            "other_names": [
+                "TA Drama"
+            ]
+        },
+        {
+            "name": "Theater Arts Studio Building",
+            "place_id": "ChIJoxjba59BjoAR4W-yjpaB94s",
+            "other_names": [
+                "TA Studio"
+            ]
+        },
+        {
+            "name": "Theater Arts Classroom Building",
+            "place_id": "ChIJ7zpJbp9BjoARcaSHWm9cRpE",
+            "other_names": [
+                "TA Lecture"
+            ]
+        },
+        {
+            "name": "Theater Arts Office Building",
+            "place_id": "ChIJEZlpQ59BjoARXSuPWPT3gZs",
+            "other_names": [
+                "TA Offices"
+            ]
+        },
+        {
+            "name": "Visual Arts Research Facility",
+            "place_id": "ChIJ87MPNI1BjoARTe5lwE41HGg",
+            "other_names": []
+        },
+        {
+            "name": "Biomedical Sciences Building",
+            "place_id": "ChIJf8vrSnVBjoAR4wWUP8qeyNg",
+            "other_names": [
+                "BiomedSci",
+                "BioMedSci"
+            ]
+        },
+        {
+            "name": "Hahn Student Services",
+            "place_id": "ChIJ5WaXa6FBjoARz3jyS-_t22A",
+            "other_names": []
+        },
+        {
+            "name": "Elena Baskin Visual Arts Center",
+            "place_id": "ChIJ3Vh_46FBjoARU-Dr3H-ZOFY",
+            "other_names": [
+                "E Baskin"
+            ]
+        },
+        {
+            "name": "Kerr Hall",
+            "place_id": "ChIJFyeQk59BjoAR8hgeoyJ-I9I",
+            "other_names": []
+        },
+        {
+            "name": "Natural Sciences 2 Building",
+            "place_id": "ChIJK_vcBaBBjoAReP0Ep5R6OPY",
+            "other_names": [
+                "Nat Sci 2"
+            ]
+        },
+        {
+            "name": "Thimann Lecture Hall",
+            "place_id": "ChIJV0Pj-Z9BjoAR7ImknetozVE",
+            "other_names": [
+                "Thim Lecture"
+            ]
+        },
+        {
+            "name": "Classroom Unit Building",
+            "place_id": "ChIJ__8_56BBjoARnYLZxB5PFEU",
+            "other_names": [
+                "ClassroomUnit"
+            ]
+        },
+        {
+            "name": "Silicon Valley Building",
+            "place_id": "ChIJe-WubO3Jj4ARv44fLud8W-s",
+            "other_names": [
+                "SiliconValleyCtr"
+            ]
+        },
+        {
+            "name": "Science and Engineering Library",
+            "place_id": "ChIJWeGcqQpBjoARohHiF-L7tB0",
+            "other_names": [
+                "Sci & Engr Library",
+                "Sci and Engr Library"
+            ]
+        },
+        {
+            "name": "Coastal Biology Building",
+            "place_id": "ChIJk4l9aQxqjoARMFwRRkXU8Y8",
+            "other_names": [
+                "CoastBio"
+            ]
+        },
+        {
+            "name": "Seymour Marine Discovery Center",
+            "place_id": "ChIJxWkeoAxqjoARh0CWEuQhlYI",
+            "other_names": [
+                "Lg Discovery"
+            ]
+        },
+        {
+            "name": "Ocean Health Building",
+            "place_id": "ChIJ2Q9f7g1qjoARYmj4sdwcmlc",
+            "other_names": [
+                "Ocean Health"
+            ]
+        },
+        {
+            "name": "Center for Agroecology and Sustainable Food Systems",
+            "place_id": "ChIJtZ-q2b5BjoARoHVbhRczdqI",
+            "other_names": [
+                "Agroecology"
+            ]
+        },
+        {
+            "name": "Westside Research Park",
+            "place_id": "ChIJDfM-potrjoARAVLXmwCy_qM",
+            "other_names": [
+                "WestResearchPark"
+            ]
+        },
+        {
+            "name": "Stevenson Event Center",
+            "place_id": "ChIJwzRgeTFBjoARowgMh-mW0FM",
+            "other_names": [
+                "Steven Event Ctr"
+            ]
+        },
+        {
+            "name": "Kresge Annex Building A",
+            "place_id": "ChIJWQ8X-HVBjoARiQ_-6HE3-aA",
+            "other_names": [
+                "KresgeAnnexA"
+            ]
+        },
+        {
+            "name": "Kresge Annex Building B",
+            "place_id": "ChIJIzmtIZ5BjoARl57v8tERyw0",
+            "other_names": []
+        },
+        {
+            "name": "West Tennis Courts",
+            "place_id": "ChIJo98-4m1BjoAR0TEaxp-Ag8Q",
+            "other_names": [
+                "West Tennis Ct"
+            ]
+        },
+        {
+            "name": "East Tennis Courts",
+            "place_id": "ChIJC2yclZ1BjoAR5Y6gZ3aCDpg",
+            "other_names": [
+                "E Tennis Ct"
+            ]
+        },
+        {
+            "name": "50-Meter Pool",
+            "place_id": "ChIJfXnRaqRBjoARTj3pZCEeB5M",
+            "other_names": [
+                "50 Mtr Pool",
+                "Fifty Meter Pool",
+                "Fifty Mtr Pool"
+            ]
+        },
+        {
+            "name": "East Sand Courts",
+            "place_id": "ChIJIThdVKRBjoAR2STgjU2evz8",
+            "other_names": [
+                "East Sand Court"
+            ]
+        },
+        {
+            "name": "East Field",
+            "place_id": "ChIJIThdVKRBjoAR2STgjU2evz8",
+            "other_names": []
+        },
+        {
+            "name": "Athletics & Recreation Fitness Center",
+            "place_id": "ChIJVRW6fKRBjoARlWkP543vP7g",
+            "other_names": [
+                "Athletics and Recreation Fitness Center",
+                "OPERS Fitness Center",
+                "East Gym"
+            ]
+        },
+        {
+            "name": "Athletics & Recreation Multi-Purpose Room",
+            "place_id": "ChIJGapeeqRBjoARtuFWAVAOGno",
+            "other_names": [
+                "Athletics and Recreation Multi-Purpose Room",
+                "OPERS Multi Purpose"
+            ]
+        },
+        {
+            "name": "West Field House",
+            "place_id": "ChIJD1EkHJlBjoARcljZO-vT6Sk",
+            "other_names": []
+        },
+        {
+            "name": "East Field House",
+            "place_id": "ChIJR-yPFaRBjoARMxZJxzeRcPw",
+            "other_names": []
+        }
+    ]
+}
