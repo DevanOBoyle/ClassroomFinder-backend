@@ -72,7 +72,9 @@ app.get("/classes/:term", async (req, res) => {
 
     await client.connect();
 
-    client.query(`select * from classes_${req.params.term}`, (error, response) => {
+    client.query(`select * from classes_${req.params.term} C 
+    join instructors_${req.params.term} I on C.number = I.class_number 
+    join meetings_${req.params.term} M on C.number = M.class_number`, (error, response) => {
       if (!error) {
         res.status(200).send({ status: 200, classes: response.rows });
       } else {
