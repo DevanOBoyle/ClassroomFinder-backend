@@ -50,15 +50,18 @@ app.get("/rooms", async (req, res) => {
 
     await client.connect();
 
-    client.query(`select R.number "room_number", * 
-    from rooms R join buildings B on R.building_number = B.number`, (error, response) => {
-      if (!error) {
-        res.status(200).send({ status: 200, buildings: response.rows });
-      } else {
-        console.log("Error occured while querying room data");
-      }
-      client.end;
-    });
+    client.query(
+      `select R.number "room_number", * 
+      from rooms R join buildings B on R.building_number = B.number`,
+      (error, response) => {
+        if (!error) {
+          res.status(200).send({ status: 200, buildings: response.rows });
+        } else {
+          console.log("Error occured while querying room data");
+        }
+        client.end;
+      },
+    );
   } catch (err) {
     res.status(500).send({ status: 500, error: "Unable to grab room data" });
     functions.logger.log(`Unable to retrieve room data`);
@@ -73,16 +76,19 @@ app.get("/classes/:term", async (req, res) => {
 
     await client.connect();
 
-    client.query(`select * from classes_${req.params.term} C 
+    client.query(
+      `select * from classes_${req.params.term} C 
     join instructors_${req.params.term} I on C.number = I.class_number 
-    join meetings_${req.params.term} M on C.number = M.class_number`, (error, response) => {
-      if (!error) {
-        res.status(200).send({ status: 200, classes: response.rows });
-      } else {
-        console.log(`Error occured while querying ${req.params.term} data`);
-      }
-      client.end;
-    });
+    join meetings_${req.params.term} M on C.number = M.class_number`,
+      (error, response) => {
+        if (!error) {
+          res.status(200).send({ status: 200, classes: response.rows });
+        } else {
+          console.log(`Error occured while querying ${req.params.term} data`);
+        }
+        client.end;
+      },
+    );
   } catch (err) {
     res.status(500).send({ status: 500, error: `Unable to grab ${req.params.term} data` });
     functions.logger.log(`Unable to class ${req.params.term} data`);
