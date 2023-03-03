@@ -55,7 +55,7 @@ app.get("/rooms", async (req, res) => {
       from rooms R join buildings B on R.building_number = B.number`,
       (error, response) => {
         if (!error) {
-          res.status(200).send({ status: 200, buildings: response.rows });
+          res.status(200).send({ status: 200, rooms: response.rows });
         } else {
           console.log("Error occured while querying room data");
         }
