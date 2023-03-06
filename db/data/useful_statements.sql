@@ -49,6 +49,6 @@ FROM classes_<term> AS c
 JOIN meetings_<term> AS m on m.class_number = c.number
 JOIN rooms as r on r.name = m.meeting_place
 JOIN buildings as b on b.number = r.building_number
-WHERE m.meeting_place = '<room name>';
+WHERE r.name = '<room name>';
 
 
