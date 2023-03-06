@@ -402,6 +402,7 @@ def main() -> None:
     # To prevent sending garbage, check if term is supported.
     # Afterwards, send the POST request.
     valid_terms = {
+        "spring2023": 2232,
         "winter2023": 2230,
         "fall2022": 2228
     }
